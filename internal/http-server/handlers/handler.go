@@ -6,6 +6,7 @@ import (
 	"fmt"
 	_ "github.com/mattn/go-sqlite3"
 	"html/template"
+	"log"
 	"net/http"
 )
 
@@ -22,7 +23,10 @@ func AllCheck(st *sqlite.Storage) func(w http.ResponseWriter, r *http.Request) {
 			fmt.Errorf("failed to parse template", err)
 		}
 
-		t.Execute(w, pr)
+		err = t.Execute(w, pr)
+		if err != nil {
+			log.Println(err)
+		}
 
 	}
 }

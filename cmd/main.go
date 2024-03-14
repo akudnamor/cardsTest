@@ -18,8 +18,10 @@ func main() {
 
 	router.HandleFunc("/add", handlers.AddFiveRandom(storage))
 
+	router.Handle("/static/*", http.StripPrefix("/static/", http.FileServer(http.Dir("internal"))))
+
 	srv := http.Server{
-		Addr:         "localhost:8080",
+		Addr:         "localhost:8081",
 		Handler:      router,
 		ReadTimeout:  0,
 		WriteTimeout: 0,

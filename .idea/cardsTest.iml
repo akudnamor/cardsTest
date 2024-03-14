@@ -10,4 +10,7 @@
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="popper.js" level="application" />
   </component>
+  <component name="SonarLintModuleSettings">
+    <option name="uniqueId" value="63cf1ddb-db1d-4125-8953-244e72a90e3b" />
+  </component>
 </module>

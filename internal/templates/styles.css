@@ -2,7 +2,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 317px 176px 419px;
-  background-image: url("internal/templates/assets/img/background.jpg");
+  background-image: url("static/templates/assets/img/background.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
