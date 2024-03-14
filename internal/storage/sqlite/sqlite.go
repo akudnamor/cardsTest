@@ -1,16 +1,11 @@
 package sqlite
 
 import (
+	"cardsTest/internal/storage"
 	"database/sql"
 	"fmt"
 	_ "github.com/mattn/go-sqlite3"
 )
-
-type Product struct {
-	ID    int
-	Name  string
-	Price float64
-}
 
 type Storage struct {
 	db *sql.DB
@@ -43,9 +38,10 @@ func New(storagePath string) (*Storage, error) {
 	return &Storage{db: db}, nil
 }
 
-func (s *Storage) GetProductWithOffset(limit, offset int) ([]Product, error) {
+// it can be not working
+func (s *Storage) GetProductWithOffset(limit, offset int) ([]storage.Product, error) {
 	const op = "storage.sqlite.GetProductWithOffset"
-	stmt, err := s.db.Prepare("SELECT * FROM products LIMIT (?) OFFSET (?)")
+	stmt, err := s.db.Prepare("SELECT id, name, price FROM products LIMIT (?) OFFSET (?)")
 	if err != nil {
 		fmt.Errorf("%s: %w", op, err)
 	}
@@ -54,9 +50,9 @@ func (s *Storage) GetProductWithOffset(limit, offset int) ([]Product, error) {
 		fmt.Errorf("%s: %w", op, err)
 	}
 
-	var products []Product
+	var products []storage.Product
 	for rows.Next() {
-		var product Product
+		var product storage.Product
 		err = rows.Scan(&product.ID, &product.Name, &product.Price)
 		products = append(products, product)
 	}
@@ -64,7 +60,7 @@ func (s *Storage) GetProductWithOffset(limit, offset int) ([]Product, error) {
 	return products, nil
 }
 
-func (s *Storage) GetAllProduct() ([]Product, error) {
+func (s *Storage) GetAllProduct() ([]storage.Product, error) {
 	const op = "storage.sqlite.GetAllProduct"
 	stmt, err := s.db.Prepare("SELECT id, name, price FROM products")
 	if err != nil {
@@ -75,9 +71,9 @@ func (s *Storage) GetAllProduct() ([]Product, error) {
 		fmt.Errorf("%s: %w", op, err)
 	}
 
-	var products []Product
+	var products []storage.Product
 	for rows.Next() {
-		var product Product
+		var product storage.Product
 		err = rows.Scan(&product.ID, &product.Name, &product.Price)
 		products = append(products, product)
 	}

@@ -33,7 +33,7 @@ func AddFiveRandom(st *sqlite.Storage) func(w http.ResponseWriter, r *http.Reque
 		for i := 0; i < 5; i++ {
 			err := st.AddProduct(random.RandomInt(), random.RandomString(), random.RandomFloat64())
 			if err != nil {
-				fmt.Errorf("failed to get prod", err)
+				fmt.Errorf("failed to add prod", err)
 			}
 		}
 

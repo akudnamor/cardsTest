@@ -1,0 +1,111 @@
+body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 317px 176px 419px;
+  background-image: url("internal/templates/assets/img/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+nav {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+footer {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+main {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  width: 1124px;
+}
+
+header,
+nav,
+footer {
+  margin-left: 141px;
+  width: 456px;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.button-nav {
+  width: 456px;
+  height: 56px;
+  background-color: black;
+  border: none;
+}
+
+.button-nav:hover {
+  background-color: #0f0f0f;
+}
+
+.icon {
+  margin-top: 83px;
+  margin-left: 91px;
+}
+
+.button-nav-text {
+  font-family: "Marcellus", serif;
+  color: white;
+  font-size: 34px;
+}
+
+.active {
+  border: 2px solid #b1dee1;
+}
+
+.prev-next-container {
+  height: 105px;
+}
+
+.prev-next {
+  margin-top: 108px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.prev-next-text {
+  font-family: "Marcellus", serif;
+  font-size: 43px;
+  color: white;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 229px);
+  width: 100%;
+  max-width: 1000px;
+  justify-content: center;
+  justify-items: center; /* Размещаем карточку по центру */
+  column-gap: 30px; /* Отступ между колонками */
+  row-gap: 40px; /* Отступ между рядами */
+  margin: 0 auto;
+}
+
+.card {
+  width: 229px;
+  min-height: 282px;
+  display: flex;
+  flex-direction: column; /* Размещаем элементы в колонку */
+  position: relative;
+}
+
+.order {
+  width: 186px;
+  height: 264px;
+  margin-left: 18px;
+}
