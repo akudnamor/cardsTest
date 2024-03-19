@@ -1,13 +1,15 @@
 package handlers
 
 import (
-	"cardsTest/internal/storage/sqlite"
-	"cardsTest/lib/random"
+	"BOARD/internal/storage/sqlite"
+	"BOARD/lib/random"
 	"fmt"
+	"github.com/go-chi/chi/v5"
 	_ "github.com/mattn/go-sqlite3"
 	"html/template"
 	"log"
 	"net/http"
+	"strconv"
 )
 
 func AllCheck(st *sqlite.Storage) func(w http.ResponseWriter, r *http.Request) {
@@ -31,17 +33,32 @@ func AllCheck(st *sqlite.Storage) func(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func AddFiveRandom(st *sqlite.Storage) func(w http.ResponseWriter, r *http.Request) {
+func CheckOrder(st *sqlite.Storage) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-
-		for i := 0; i < 5; i++ {
-			err := st.AddProduct(random.RandomInt(), random.RandomString(), random.RandomFloat64())
-			if err != nil {
-				fmt.Errorf("failed to add prod", err)
-			}
+		ID, err := strconv.Atoi(chi.URLParam(r, "ID"))
+		if err != nil {
+			fmt.Errorf("failed to conv string", err)
 		}
 
-		w.Write([]byte("ADDED 5"))
+		pr, err := st.GetProductByID(ID)
+		if err != nil {
+			fmt.Errorf("failed to get prod", err)
+		}
 
+		w.Write([]byte(pr.Name))
+		return
+	}
+}
+
+func AddRandom(st *sqlite.Storage) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		err := st.AddProduct(random.RandomInt(), random.RandomString(), random.RandomFloat64())
+		if err != nil {
+			fmt.Errorf("failed to add prod", err)
+		}
+
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+		return
 	}
 }

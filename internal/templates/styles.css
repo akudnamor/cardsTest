@@ -2,7 +2,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 317px 176px 419px;
-  background-image: url("static/templates/assets/img/background.jpg");
+  background-image: url("/internal/templates/assets/img/background.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -13,17 +13,14 @@ body {
 }
 
 header {
-  grid-column: 1;
   grid-row: 1;
 }
 
 nav {
-  grid-column: 1;
   grid-row: 2;
 }
 
 footer {
-  grid-column: 1;
   grid-row: 3;
 }
 
@@ -36,6 +33,7 @@ main {
 header,
 nav,
 footer {
+  grid-column: 1;
   margin-left: 141px;
   width: 456px;
   background-color: rgba(0, 0, 0, 0.75);
@@ -49,7 +47,7 @@ footer {
 }
 
 .button-nav:hover {
-  background-color: #0f0f0f;
+  border: 2px solid #b1dee1;
 }
 
 .icon {
@@ -61,10 +59,6 @@ footer {
   font-family: "Marcellus", serif;
   color: white;
   font-size: 34px;
-}
-
-.active {
-  border: 2px solid #b1dee1;
 }
 
 .prev-next-container {
@@ -90,9 +84,9 @@ footer {
   width: 100%;
   max-width: 1000px;
   justify-content: center;
-  justify-items: center; /* Размещаем карточку по центру */
-  column-gap: 30px; /* Отступ между колонками */
-  row-gap: 40px; /* Отступ между рядами */
+  justify-items: center;
+  column-gap: 30px;
+  row-gap: 40px;
   margin: 0 auto;
 }
 
@@ -100,7 +94,7 @@ footer {
   width: 229px;
   min-height: 282px;
   display: flex;
-  flex-direction: column; /* Размещаем элементы в колонку */
+  flex-direction: column;
   position: relative;
 }
 

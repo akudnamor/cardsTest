@@ -1,8 +1,8 @@
 package main
 
 import (
-	"cardsTest/internal/http-server/handlers"
-	"cardsTest/internal/storage/sqlite"
+	"BOARD/internal/http-server/handlers"
+	"BOARD/internal/storage/sqlite"
 	"github.com/go-chi/chi/v5"
 	_ "github.com/mattn/go-sqlite3"
 	"log"
@@ -14,11 +14,13 @@ func main() {
 
 	router := chi.NewRouter()
 
+	router.Handle("/internal/*", http.StripPrefix("/internal/", http.FileServer(http.Dir("internal"))))
+
 	router.HandleFunc("/", handlers.AllCheck(storage))
 
-	router.HandleFunc("/add", handlers.AddFiveRandom(storage))
+	router.HandleFunc("/add", handlers.AddRandom(storage))
 
-	router.Handle("/static/*", http.StripPrefix("/static/", http.FileServer(http.Dir("internal"))))
+	router.HandleFunc("/order/{ID}", handlers.CheckOrder(storage))
 
 	srv := http.Server{
 		Addr:         "localhost:8081",

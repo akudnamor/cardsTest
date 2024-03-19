@@ -1,4 +1,4 @@
-module cardsTest
+module BOARD
 
 go 1.21.5
 

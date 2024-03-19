@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="identifier.sqlite" uuid="888493dd-3f4b-4070-992e-095bd441cd94">
+    <data-source source="LOCAL" name="storage [2]" uuid="b732b83e-7e8a-4353-8e7e-cb322dc38d44">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:identifier.sqlite</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="storage" uuid="55c048cf-08eb-4f52-ad3f-1dadabf0e91d">
-      <driver-ref>sqlite.xerial</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\github.com\akudnamor\cardsTest\storage\storage.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\github.com\akudnamor\BOARD\storage\storage.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <libraries>
         <library>

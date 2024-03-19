@@ -1,7 +1,7 @@
 package sqlite
 
 import (
-	"cardsTest/internal/storage"
+	"BOARD/internal/storage"
 	"database/sql"
 	"fmt"
 	_ "github.com/mattn/go-sqlite3"
@@ -79,6 +79,22 @@ func (s *Storage) GetAllProduct() ([]storage.Product, error) {
 	}
 
 	return products, nil
+}
+
+func (s *Storage) GetProductByID(id int) (storage.Product, error) {
+	const op = "storage.sqlite.GetAllProduct"
+	stmt, err := s.db.Prepare("SELECT id, name, price FROM products where id = (?)")
+	if err != nil {
+		fmt.Errorf("%s: %w", op, err)
+	}
+	row := stmt.QueryRow(id)
+
+	var product storage.Product
+	err = row.Scan(&product.ID, &product.Name, &product.Price)
+	if err != nil {
+		fmt.Errorf("%s: %w", op, err)
+	}
+	return product, nil
 }
 
 func (s *Storage) AddProduct(id int, name string, price float64) error {
