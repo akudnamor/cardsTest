@@ -103,3 +103,41 @@ footer {
   height: 264px;
   margin-left: 18px;
 }
+
+.order-info {
+}
+
+.order-info-container {
+  display: flex;
+  justify-content: center; /* Горизонтальное центрирование */
+  align-items: center; /* Вертикальное центрирование */
+}
+
+.order-info-back {
+  display: flex;
+  flex-direction: column; /* Размещаем элементы в колонку */
+  position: relative;
+
+  background-image: url("/internal/templates/assets/img/order.jpg");
+  background-size: contain;
+  height: 600px;
+  width: 424px;
+  transform: rotate(3deg);
+}
+
+.order-info__title {
+  display: block;
+  margin-top: 216px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 46px;
+  font-family: "Italianno";
+  color: #a92727;
+}
+
+.order-info__description {
+  display: block;
+  font-size: 23px;
+  text-align: center;
+  font-family: "Italianno";
+}

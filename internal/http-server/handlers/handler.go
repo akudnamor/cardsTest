@@ -45,7 +45,11 @@ func CheckOrder(st *sqlite.Storage) func(w http.ResponseWriter, r *http.Request)
 			fmt.Errorf("failed to get prod", err)
 		}
 
-		w.Write([]byte(pr.Name))
+		t, err := template.ParseFiles("internal/templates/order.html")
+		if err != nil {
+			log.Println("error", err)
+		}
+		_ = t.Execute(w, pr)
 		return
 	}
 }
